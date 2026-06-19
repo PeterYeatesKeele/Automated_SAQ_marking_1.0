@@ -52,3 +52,4 @@ Beyond this, run cells sequentially.
 
 # Data availability:
 The original student response data cannot be shared because of privacy restrictions.
+Please reference https://doi.org/10.5281/zenodo.20763469 if utilizing or publishing work based on this code.

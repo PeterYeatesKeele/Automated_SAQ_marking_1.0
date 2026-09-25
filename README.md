@@ -6,21 +6,28 @@ Author: Peter Yeates
 Keele University School of Medicine
 2026
 
-The purpose of paper is to investigate the potential to align an LLM with human judgement by using both few-shot learning and supervised finetuning within the context of a basic science knowledge testing exam for year 1 medical students 
+The purpose of paper is to investigate the potential to align an LLM with human judgement by using both few-shot learning and supervised finetuning within the context of a basic science knowledge testing exam for year 1 medical students
+Owing to constraints on which models can be fine tuned, the paper compares a contemporary (at the time of writing) an unaltered model (GPT 5.6-terra) with an older model (GPT 4.1-mini) which is fine tuned. For completeness (and to act as a negative control) the project also inferences from the base model of GPT 4.1-mini, but these data are consigned to an appendix within the paper. As there work was completed in stages, there are 2 workbooks:
 
-The workflow ingests:
-a. short answer question responses by students along with associated faculty scores and feedback
-b. question parameters
+Workbook 1: "data_prep_gpt_4.1-mini_base_and_fine_tuning.ipynb" does the following:
+Ingests:
+    a. short answer question responses by students along with associated faculty scores and feedback
+    b. question parameters
 
 as .csv files. Example .csv files are included to indicate headings, but data have been redacted for privacy / intellectual property.
 
-The workflow then: 
+Notebook 1 then : 
 1. splits the data into training, validation and testing sets
 2. bundles data with prompts +/- few shot examples within jsonl files
-3. analyses the testing data using the base LLM under zero and few-shot conditions
-4. fine-tunes the model using the training and validation datasets
-5. analyses the testing data using the fine-tuned LLM under zero and few-shot conditions
+3. analyses the testing data using the base (GPT 4.1-mini) LLM under zero and few-shot conditions
+4. fine-tunes the GPT 4.1-mini model using the training and validation datasets
+5. analyses the testing data using the 4.1-mini fine-tuned LLM under zero and few-shot conditions
 6. evaluates the outputs in comparison to human scoring, including impact on pass / fail categorisation
+
+Notebook 2: "GPT5_6_inference and joint evals.ipynb" extends this work by:
+7. analysing the testing data using the unaltered GPT 5.6-terra model under zero and few-shot conditions
+8. reloading output data from the fine-tuned GPT 4.1-mini model under zero and few-shot conditions
+9. evaluating these outputs in comparison to human scoring, including impact on pass / fail categorisation
 
 ## Installation:
 The code uses calls to OpenAI models through the OpenAI SDK. You will need an OpenAI key
